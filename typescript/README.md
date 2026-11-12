@@ -35,10 +35,6 @@ const wrapped = wrapChatModel(new ChatOpenAI({ model: "gpt-5.4" })).bindTools(to
 
 Requires Node.js 24.22.1+ and `@langchain/core` 1.2+ (`langchain` 1.5+ for the middleware).
 
-## Development
-
-See [Development](https://github.com/SovaraLabs/sovara-langchain#development).
-
 ## License
 
 MIT.

@@ -38,10 +38,6 @@ model = wrap_chat_model(ChatOpenAI(model="gpt-5.4")).bind_tools(tools)
 
 Requires `langchain-core` 1.x (`langchain` 1.1+ for the middleware).
 
-## Development
-
-See [Development](https://github.com/SovaraLabs/sovara-langchain#development).
-
 ## License
 
 MIT.
