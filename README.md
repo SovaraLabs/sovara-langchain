@@ -37,7 +37,7 @@ npm run check
 
 ### End-to-end tests
 
-These run against a real Sovara exec server, started from the sovara checkout (set
+These run against a real Sovara server, started from the sovara checkout (set
 `SOVARA_SOURCE_DIR` to use another one). Run `uv sync` there and start its Postgres with
 `./dev.sh` or `docker compose -f deploy/dev/compose.yaml up -d`. No model is called.
 

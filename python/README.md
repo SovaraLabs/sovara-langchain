@@ -36,8 +36,7 @@ model = wrap_chat_model(ChatOpenAI(model="gpt-5.4")).bind_tools(tools)
 - Don't use the middleware and the wrapper for the same model.
 - Model calls are recorded as conversations, so **Rerun** is not available for them.
 
-Requires `langchain-core` 1.x (`langchain` 1.1+ for the middleware) and an exec server with
-runner-api 6.
+Requires `langchain-core` 1.x (`langchain` 1.1+ for the middleware).
 
 ## Development
 

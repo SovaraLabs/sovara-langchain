@@ -33,8 +33,7 @@ const wrapped = wrapChatModel(new ChatOpenAI({ model: "gpt-5.4" })).bindTools(to
 - Don't use the middleware and the wrapper for the same model.
 - Model calls are recorded as conversations, so **Rerun** is not available for them.
 
-Requires Node.js 24.22.1+, `@langchain/core` 1.2+ (`langchain` 1.5+ for the middleware) and an
-exec server with runner-api 6.
+Requires Node.js 24.22.1+ and `@langchain/core` 1.2+ (`langchain` 1.5+ for the middleware).
 
 ## Development
 
