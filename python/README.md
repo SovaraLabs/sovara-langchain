@@ -4,8 +4,11 @@ Record LangChain and LangGraph model and tool calls in Sovara, and add relevant 
 model request.
 
 ```bash
-pip install "sovara-langchain[agent]"   # without [agent] if you only use wrap_chat_model
+uv add "sovara-langchain[agent]"
+# or: pip install "sovara-langchain[agent]"
 ```
+
+Omit `[agent]` if you only use `wrap_chat_model`.
 
 ## Use
 
@@ -33,12 +36,7 @@ model = wrap_chat_model(ChatOpenAI(model="gpt-5.4")).bind_tools(tools)
 - Don't use the middleware and the wrapper for the same model.
 - Model calls are recorded as conversations, so **Rerun** is not available for them.
 
-Requires `langchain-core` 1.x (`langchain` 1.1+ for the middleware) and an exec server with
-runner-api 6.
-
-## Development
-
-See [Development](https://github.com/SovaraLabs/sovara-langchain#development).
+Requires `langchain-core` 1.x (`langchain` 1.1+ for the middleware).
 
 ## License
 
