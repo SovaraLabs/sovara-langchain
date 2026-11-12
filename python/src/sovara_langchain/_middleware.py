@@ -1,6 +1,6 @@
 """Record LangChain ``create_agent`` model and tool calls, with lessons per model call.
 
-Requires ``langchain>=1.1`` (``pip install "sovara-langchain[agent]"``). Add the middleware
+Requires ``langchain>=1.1`` (``uv add "sovara-langchain[agent]"``). Add the middleware
 last, so it records the request other middleware finalized (model, prompt, messages) and each
 attempt of a middleware retry as its own step::
 

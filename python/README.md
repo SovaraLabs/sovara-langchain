@@ -4,7 +4,7 @@ Record LangChain and LangGraph model and tool calls in Sovara, and add relevant 
 model request.
 
 ```bash
-pip install "sovara-langchain[agent]"   # without [agent] if you only use wrap_chat_model
+uv add "sovara-langchain[agent]"   # without [agent] if you only use wrap_chat_model
 ```
 
 ## Use
