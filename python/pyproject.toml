@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sovara-langchain"
+version = "0.1.0"
+description = "Sovara recording and lessons for LangChain and LangGraph"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "sovara",
+    "langchain-core>=1,<2",
+]
+
+[project.optional-dependencies]
+# SovaraMiddleware for create_agent.
+agent = ["langchain>=1.1,<2"]
+
+[project.urls]
+Documentation = "https://docs.sovara-labs.com/sdks/integrations"
+Repository = "https://github.com/SovaraLabs/sovara-langchain/tree/main/python"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["sovara_langchain*"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff==0.17.2",
+    "httpx",
+    "langchain>=1.1,<2",
+    "langchain-anthropic",
+    "langchain-openai",
+    "langgraph",
+    # Newer releases reject the httpx client the provider tests inject.
+    "anthropic==0.88.0",
+]
+
+[tool.uv.sources]
+# Development uses a sovara checkout next to this repository.
+sovara = { path = "../../sovara/packages/python-sdk", editable = true }
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E4", "E7", "E9", "F", "I", "UP", "B",
+    "D100", "D101", "D102", "D103", "D104", "D106", "D107",
+    "D200", "D205", "D400", "D401", "D419",
+    "ERA001", "PGH004", "RUF100",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["D1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# End-to-end tests need a running Sovara test server; run them with `-m e2e`.
+addopts = "-m 'not e2e'"
+markers = ["e2e: runs against a real Sovara exec server (see tests/e2e/support.py)"]
+
+[tool.ruff.lint.isort]
+# Sovara's own packages sort together, as in the sovara repository.
+known-first-party = ["sovara", "sovara_common", "sovara_langchain", "tests"]

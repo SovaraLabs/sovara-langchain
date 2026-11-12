@@ -1,0 +1,59 @@
+{
+  "name": "@sovara/langchain",
+  "version": "0.1.0",
+  "description": "Sovara recording and lessons for LangChain and LangGraph",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SovaraLabs/sovara-langchain.git",
+    "directory": "typescript"
+  },
+  "homepage": "https://github.com/SovaraLabs/sovara-langchain/tree/main/typescript#readme",
+  "keywords": ["sovara", "langchain", "langgraph", "observability"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tools": {
+      "types": "./dist/tools.d.ts",
+      "import": "./dist/tools.js"
+    },
+    "./chat-model": {
+      "types": "./dist/chatModel.d.ts",
+      "import": "./dist/chatModel.js"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": {
+    "node": ">=24.22.1"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@sovara/sdk": "file:../../sovara/packages/typescript-sdk"
+  },
+  "peerDependencies": {
+    "@langchain/core": ">=1.2.0 <2",
+    "langchain": ">=1.5.0 <2"
+  },
+  "peerDependenciesMeta": {
+    "langchain": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@langchain/core": "^1.3.6",
+    "@langchain/langgraph": "^1.7.3",
+    "@types/node": "^22.10.2",
+    "langchain": "^1.6.3",
+    "typescript": "^5.6.3",
+    "vitest": "^4.1.1",
+    "zod": "^4.4.3"
+  }
+}

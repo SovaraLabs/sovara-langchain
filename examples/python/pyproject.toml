@@ -1,0 +1,16 @@
+[project]
+name = "sovara-examples-langchain"
+version = "0.1.0"
+description = "Sovara debug examples for LangChain"
+requires-python = ">=3.10"
+dependencies = [
+    "sovara",
+    "sovara-langchain",
+    "langchain",
+    "langchain-anthropic",
+    "langchain-openai",
+]
+
+[tool.uv.sources]
+sovara = { path = "../../../sovara/packages/python-sdk", editable = true }
+sovara-langchain = { path = "../../python", editable = true }
