@@ -10,7 +10,7 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
 dependencies = [
-    "sovara",
+    "sovara>=0.10,<0.11",
     "langchain-core>=1,<2",
 ]
 
@@ -19,7 +19,7 @@ dependencies = [
 agent = ["langchain>=1.1,<2"]
 
 [project.urls]
-Documentation = "https://docs.sovara-labs.com/sdks/integrations"
+Documentation = "https://docs.sovara-labs.com/integrations/langchain"
 Repository = "https://github.com/SovaraLabs/sovara-langchain/tree/main/python"
 
 [tool.setuptools]
@@ -41,10 +41,6 @@ dev = [
     # Newer releases reject the httpx client the provider tests inject.
     "anthropic==0.88.0",
 ]
-
-[tool.uv.sources]
-# Development uses a sovara checkout next to this repository.
-sovara = { path = "../../sovara/packages/python-sdk", editable = true }
 
 [tool.ruff]
 line-length = 100

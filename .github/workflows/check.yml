@@ -13,14 +13,6 @@ jobs:
       - uses: actions/checkout@v5
         with:
           path: sovara-langchain
-      # The packages use the SDK from a sovara checkout next to this repository, on the
-      # branch in SOVARA_REF (default main). SOVARA_REPO_TOKEN must be able to read it.
-      - uses: actions/checkout@v5
-        with:
-          repository: SovaraLabs/sovara
-          ref: ${{ vars.SOVARA_REF || 'main' }}
-          token: ${{ secrets.SOVARA_REPO_TOKEN }}
-          path: sovara
       - uses: astral-sh/setup-uv@v7
       - name: Test and lint
         working-directory: sovara-langchain/python
@@ -37,20 +29,9 @@ jobs:
       - uses: actions/checkout@v5
         with:
           path: sovara-langchain
-      # The packages use the SDK from a sovara checkout next to this repository, on the
-      # branch in SOVARA_REF (default main). SOVARA_REPO_TOKEN must be able to read it.
-      - uses: actions/checkout@v5
-        with:
-          repository: SovaraLabs/sovara
-          ref: ${{ vars.SOVARA_REF || 'main' }}
-          token: ${{ secrets.SOVARA_REPO_TOKEN }}
-          path: sovara
       - uses: actions/setup-node@v5
         with:
           node-version: 24.22.1
-      - name: Build the SDK
-        working-directory: sovara/packages/typescript-sdk
-        run: npm ci && npm run build
       - name: Check
         working-directory: sovara-langchain/typescript
         run: npm ci && npm run check

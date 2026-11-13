@@ -1764,8 +1764,8 @@ wheels = [
 
 [[package]]
 name = "sovara"
-version = "0.9.0"
-source = { editable = "../../sovara/packages/python-sdk" }
+version = "0.10.0"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "filelock", version = "4.1.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "filelock", version = "4.2.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
@@ -1774,20 +1774,9 @@ dependencies = [
     { name = "httpx" },
     { name = "pydantic" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "anthropic", marker = "extra == 'examples'" },
-    { name = "filelock" },
-    { name = "flatten-dict" },
-    { name = "flatten-json" },
-    { name = "google-genai", marker = "extra == 'examples'" },
-    { name = "httpx" },
-    { name = "openai", marker = "extra == 'examples'" },
-    { name = "openai-agents", marker = "extra == 'examples'" },
-    { name = "pydantic", specifier = ">=2.12" },
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/83/d5/8e264804a8de959ca7ba97a1bd16ba5810779b22225f4bf9451bd43440b9/sovara-0.10.0-py3-none-any.whl", hash = "sha256:c722c4d727132f21a115e9d877def9b45e03ed0a42018d9547ff48191f37d0ab", size = 120424, upload-time = "2026-11-13T14:53:50.545Z" },
 ]
-provides-extras = ["examples"]
 
 [[package]]
 name = "sovara-langchain"
@@ -1822,7 +1811,7 @@ dev = [
 requires-dist = [
     { name = "langchain", marker = "extra == 'agent'", specifier = ">=1.1,<2" },
     { name = "langchain-core", specifier = ">=1,<2" },
-    { name = "sovara", editable = "../../sovara/packages/python-sdk" },
+    { name = "sovara", specifier = ">=0.10,<0.11" },
 ]
 provides-extras = ["agent"]
 
