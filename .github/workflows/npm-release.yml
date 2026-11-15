@@ -1,0 +1,47 @@
+name: Release npm
+on:
+  workflow_dispatch:
+  push:
+    tags: ['typescript-v*']
+permissions:
+  contents: read
+  id-token: write
+concurrency:
+  group: npm-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.event_name == 'push' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: typescript
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Require reviewed source and matching tag
+        env:
+          RELEASE_REF: ${{ github.ref_name }}
+          RELEASE_EVENT: ${{ github.event_name }}
+        run: |
+          git merge-base --is-ancestor HEAD origin/main
+          VERSION="$(node -p "require('./package.json').version")"
+          if [ "$RELEASE_EVENT" = push ]; then
+            test "$RELEASE_REF" = "typescript-v$VERSION"
+          fi
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24.22.1
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm run check
+      - name: Publish with npm trusted publishing
+        run: |
+          PACKAGE="$(node -p "require('./package.json').name")"
+          VERSION="$(node -p "require('./package.json').version")"
+          if npm view "$PACKAGE@$VERSION" version > /dev/null 2>&1; then
+            echo "$PACKAGE@$VERSION is already published."
+          else
+            npm publish --access public --provenance
+          fi
