@@ -1,7 +1,11 @@
 # Sovara for LangChain
 
-Record LangChain and LangGraph model and tool calls in Sovara, and add relevant lessons to each
-model request.
+Sovara helps teams manage domain knowledge and put it to work in AI agents.
+Capture business rules, expert guidance, and lessons from experience in a shared
+knowledge base. Deliver relevant knowledge to agents as they work, review how
+they use it, and improve it together.
+
+Bring your team's domain knowledge to LangChain and LangGraph agents with Sovara.
 
 | Package | Install | Docs |
 | --- | --- | --- |

@@ -1,7 +1,7 @@
 {
   "name": "@sovara/langchain",
-  "version": "0.1.1",
-  "description": "Sovara recording and lessons for LangChain and LangGraph",
+  "version": "0.1.2",
+  "description": "Bring your team's domain knowledge to LangChain and LangGraph agents with Sovara.",
   "type": "module",
   "license": "MIT",
   "repository": {
