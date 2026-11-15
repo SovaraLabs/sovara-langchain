@@ -1,7 +1,11 @@
 # Sovara for LangChain (Python)
 
-Record LangChain and LangGraph model and tool calls in Sovara, and add relevant lessons to each
-model request.
+Sovara helps teams manage domain knowledge and put it to work in AI agents.
+Capture business rules, expert guidance, and lessons from experience in a shared
+knowledge base. Deliver relevant knowledge to agents as they work, review how
+they use it, and improve it together.
+
+Bring your team's domain knowledge to LangChain and LangGraph agents with Sovara.
 
 ```bash
 uv add "sovara-langchain[agent]"
@@ -27,14 +31,14 @@ sovara_langchain.instrument_tools()
 model = wrap_chat_model(ChatOpenAI(model="gpt-5.4")).bind_tools(tools)
 ```
 
-- `instrument_tools()` also records tools called directly, without a model-generated tool call.
-- Lessons are one temporary user message at the end of the request. The agent's messages and
-  graph state are never changed.
-- Outside a trace, calls pass through unrecorded. If Sovara is unavailable, calls still run.
-- Last in the list, the middleware records the model, prompt and messages that other middleware
-  settled on, and each retry by other middleware as its own step.
-- Don't use the middleware and the wrapper for the same model.
-- Model calls are recorded as conversations, so **Rerun** is not available for them.
+Use either the middleware or the wrapper for a model, and keep the middleware
+last. Calls outside a Sovara trace are not recorded; agents continue running if
+Sovara is unavailable. Recorded model conversations do not support **Rerun**.
+
+[Enable knowledge injection](https://docs.sovara-labs.com/sovaradb/auto-injection)
+and see the [integration guide](https://docs.sovara-labs.com/integrations/langchain)
+for supported usage. Runnable examples are in
+[examples](https://github.com/SovaraLabs/sovara-langchain/tree/main/examples).
 
 Requires `langchain-core` 1.x (`langchain` 1.1+ for the middleware).
 

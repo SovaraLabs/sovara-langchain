@@ -1780,7 +1780,7 @@ wheels = [
 
 [[package]]
 name = "sovara-langchain"
-version = "0.1.1"
+version = "0.1.2"
 source = { editable = "." }
 dependencies = [
     { name = "langchain-core", version = "1.7.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
